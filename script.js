@@ -18,7 +18,13 @@ var now = moment();
 var timeEl = $("#currentDay");
 
 // set the value for the current day
-timeEl.text(now.format("MMMM Do, YYYY"));
+setCurrentDay(now);
+
+// Update the current day every second
+setInterval( function(){
+    now = moment();
+    setCurrentDay(now);
+}, 1000 );
 
 // Check storage and initialize
 if(!localStorage.getItem("day-planner")) {
@@ -81,3 +87,8 @@ function initializeStorage() {
     }
     localStorage.setItem("day-planner", JSON.stringify(saveData));
 }
+
+function setCurrentDay(now) {
+    timeEl.text(now.format("MMMM Do, YYYY"));
+}
+
