@@ -13,6 +13,7 @@
 // ================================================================================================================
 
 var hours = ["9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM"];
+var hourEls = [];
 var container = $(".container");
 var now = moment();
 var timeEl = $("#currentDay");
@@ -23,7 +24,13 @@ setCurrentDay(now);
 // Update the current day every second
 setInterval( function(){
     now = moment();
+    // Set jumbotron text
     setCurrentDay(now);
+
+    // Set backgrounds for each text input
+    for(hour in hours) {
+        setBackgroundByTime(hourEls[hour], hours[hour], now);
+    }
 }, 1000 );
 
 // Check storage and initialize
@@ -37,6 +44,7 @@ for(var hour in hours) {
     let hourEl = $("<section>");
     hourEl.addClass("row time-block");
     container.append(hourEl);
+    hourEls.push(hourEl);
 
     // Create a label for that element
     let hourLabelEl = $("<h2>");
