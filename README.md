@@ -19,7 +19,7 @@ Given an HTML and CSS document with Bootstrap, I created some custom JavaScript 
 * [See Live Site](https://adamkruschwitz.github.io/day-planner/)
 
 ## Screenshot
-![screenshot of the finished site](./Capture.PNG)
+![screenshot of the finished site](./assets/images/Capture.PNG)
 
 ## Authors
 
