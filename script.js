@@ -19,7 +19,7 @@ for(var hour in hours) {
     // Create the hour element
     console.log(hour);
     let hourEl = $("<section>");
-    hourEl.addClass("row");
+    hourEl.addClass("row time-block");
     container.append(hourEl);
 
     // Create a label for that element
@@ -29,6 +29,11 @@ for(var hour in hours) {
     hourEl.append(hourLabelEl);
 
     // Create a text input field for that element
+    let hourInputEl = $("<input>");
+    hourInputEl.attr("type", "text");
+    hourInputEl.attr("value", "");
+    hourInputEl.addClass("form-control col-10");
+    hourEl.append(hourInputEl);
 
     // If there is data saved, populate the data for this element
 
