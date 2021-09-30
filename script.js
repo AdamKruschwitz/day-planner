@@ -24,7 +24,7 @@ for(var hour in hours) {
 
     // Create a label for that element
     let hourLabelEl = $("<h2>");
-    hourLabelEl.addClass("hour text-end col-2");
+    hourLabelEl.addClass("hour text-end col-2 h-100");
     hourLabelEl.text(hours[hour]);
     hourEl.append(hourLabelEl);
 
@@ -32,7 +32,7 @@ for(var hour in hours) {
     let hourInputEl = $("<input>");
     hourInputEl.attr("type", "text");
     hourInputEl.attr("value", "");
-    hourInputEl.addClass("form-control col-10");
+    hourInputEl.addClass("form-control col-9 h-100");
     hourEl.append(hourInputEl);
 
     // If there is data saved, populate the data for this element
@@ -40,6 +40,10 @@ for(var hour in hours) {
     // Check the time, and set the color of this text input accordingly
 
     // Create a save button
+    let saveButtonEl = $("<button>");
+    saveButtonEl.addClass("saveBtn col-1 h-100");
+    saveButtonEl.text("💾");
+    hourEl.append(saveButtonEl);
 
     // Assign an on click event which saves the text input info to local storage
 
