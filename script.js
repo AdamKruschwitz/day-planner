@@ -57,6 +57,7 @@ for(var hour in hours) {
         hourInputEl.val(saveData[hours[hour]]);
     }
     // Check the time, and set the color of this text input accordingly
+    setBackgroundByTime(hourInputEl, hours[hour], now);
 
     // Create a save button
     let saveButtonEl = $("<button>");
@@ -88,7 +89,21 @@ function initializeStorage() {
     localStorage.setItem("day-planner", JSON.stringify(saveData));
 }
 
+// Set the current day of the time element.
 function setCurrentDay(now) {
     timeEl.text(now.format("MMMM Do, YYYY"));
 }
 
+// Set the appropriate background color for the given input based on the given time and the given current time.
+function setBackgroundByTime(input, hour, now) {
+    let hourMoment = moment(hour, "h A");
+    if(now.isBefore(hourMoment)) {
+        input.addClass("future");
+    }
+    else if(now.isAfter(hourMoment) && now.isBefore(hourMoment.add(1, "h"))) {
+        input.addClass("present");
+    }
+    else {
+        input.addClass("past");
+    }
+}
