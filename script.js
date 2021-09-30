@@ -29,7 +29,7 @@ for(var hour in hours) {
 
     // Create a label for that element
     let hourLabelEl = $("<h2>");
-    hourLabelEl.addClass("hour text-end col-2 h-100");
+    hourLabelEl.addClass("hour col-2 h-100");
     hourLabelEl.text(hours[hour]);
     hourEl.append(hourLabelEl);
 
@@ -41,7 +41,10 @@ for(var hour in hours) {
     hourEl.append(hourInputEl);
 
     // If there is data saved, populate the data for this element
-
+    let saveData = JSON.parse(localStorage.getItem("day-planner"));
+    if(saveData[hours[hour]]) {
+        hourInputEl.val(saveData[hours[hour]]);
+    }
     // Check the time, and set the color of this text input accordingly
 
     // Create a save button
