@@ -13,8 +13,10 @@ var container = $(".container");
 
 for(var hour in hours) {
     // Create the hour element
+    console.log(hour);
     let hourEl = $("<section>");
-    hourEl.class = "row w-100";
+    hourEl.addClass("row w-100 h-20 border");
+    container.append(hourEl);
 
     // Create a label for that element
 
@@ -27,4 +29,5 @@ for(var hour in hours) {
     // Create a save button
 
     // Assign an on click event which saves the text input info to local storage
+
 }
