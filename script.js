@@ -15,6 +15,11 @@
 var hours = ["9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM"];
 var container = $(".container");
 
+// Check storage and initialize
+if(!localStorage.getItem("day-planner")) {
+    initializeStorage();
+}
+
 for(var hour in hours) {
     // Create the hour element
     console.log(hour);
@@ -46,5 +51,25 @@ for(var hour in hours) {
     hourEl.append(saveButtonEl);
 
     // Assign an on click event which saves the text input info to local storage
+    saveButtonEl.click( function(event) {
+        // Get the input text and hour
+        let inputText = $(event.target).parent().children("input").val();
+        let hour = $(event.target).parent().children("h2").text();
 
+        // Load saved data and update it with the current hour's new text
+        let saveData = JSON.parse(localStorage.getItem("day-planner"));
+        saveData[hour] = inputText;
+
+        // Save
+        localStorage.setItem("day-planner", JSON.stringify(saveData));
+    } );
+}
+
+// Create the object used to save data
+function initializeStorage() {
+    let saveData = {};
+    for(hour in hours) {
+        saveData[hours[hour]] = "";
+    }
+    localStorage.setItem("day-planner", JSON.stringify(saveData));
 }
