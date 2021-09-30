@@ -14,6 +14,11 @@
 
 var hours = ["9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM"];
 var container = $(".container");
+var now = moment();
+var timeEl = $("#currentDay");
+
+// set the value for the current day
+timeEl.text(now.format("MMMM Do, YYYY"));
 
 // Check storage and initialize
 if(!localStorage.getItem("day-planner")) {
@@ -22,7 +27,7 @@ if(!localStorage.getItem("day-planner")) {
 
 for(var hour in hours) {
     // Create the hour element
-    console.log(hour);
+    // console.log(hour);
     let hourEl = $("<section>");
     hourEl.addClass("row time-block");
     container.append(hourEl);
