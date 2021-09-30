@@ -1,4 +1,8 @@
 // PSEUDOCODE =====================================================================================================
+// Get the current day
+// Set the #currentDay text to the current date/time
+// Every 1 second, update the text in #currentDay to the now current time.
+//
 // Add rows for 9-5 work hours to #container div
 //    Each row should have a text input field for the user to add text 
 //        If there is data saved for this text field, it should be added to the page.
@@ -15,10 +19,14 @@ for(var hour in hours) {
     // Create the hour element
     console.log(hour);
     let hourEl = $("<section>");
-    hourEl.addClass("row w-100 h-20 border");
+    hourEl.addClass("row");
     container.append(hourEl);
 
     // Create a label for that element
+    let hourLabelEl = $("<h2>");
+    hourLabelEl.addClass("hour text-end col-2");
+    hourLabelEl.text(hours[hour]);
+    hourEl.append(hourLabelEl);
 
     // Create a text input field for that element
 
